@@ -25,7 +25,7 @@ PATHO = build/objs/
 PATHR = build/results/
 
 
-BUILD_PATHS = $(PATHB) $(PATHD) $(PATHO) $(PATHR)
+BUILD_PATHS = $(PATHB) $(PATHD) $(PATHO) $(PATHR) $(PATHD)
 
 SRCT = $(wildcard $(PATHT)*.c)
 
@@ -50,12 +50,12 @@ test: $(BUILD_PATHS) $(RESULTS)
 	@echo "$(PASSED)"
 	@echo "\nDONE"
 
-# This builds when RESULTS is called because it is trying to create $(PATHR)Test%.txt
+
 $(PATHR)%.txt: $(PATHB)%.$(TARGET_EXTENSION)
 	-./$< > $@ 2>&1
 
 # Links object files into individual test .exes
-$(PATHB)Test%.$(TARGET_EXTENSION): $(PATHO)%.o $(PATHO)unity.o #$(PATHD)Test%.d
+$(PATHB)Test%.$(TARGET_EXTENSION): $(PATHO)Test%.o $(PATHO)%.o $(PATHO)unity.o #$(PATHD)Test%.d
 	$(LINK) -o $@ $^
 
 # make object files of all Test*.c files
