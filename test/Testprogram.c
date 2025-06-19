@@ -1,5 +1,5 @@
-#include "../src/program.h"
-#include "../unity/src/unity.h"
+#include "program.h"
+#include "unity.h"
 
 void setUp(void) {};
 
